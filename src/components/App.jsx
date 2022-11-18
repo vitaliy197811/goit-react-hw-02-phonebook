@@ -20,7 +20,7 @@ class App extends React.Component {
     let verification = false;
     this.state.contacts.forEach(el => {
       if (el.name.toLowerCase() === name.toLowerCase()) {
-        alert(`${name} is already in the contact list`);
+        alert(`${name} is already in the contacts`);
         verification = true;
       }
     });
