@@ -16,25 +16,37 @@ class App extends React.Component {
     filter: '',
   };
 
+  // addContact = ({ name, number }) => {
+  //   let verification = false;
+  //   this.state.contacts.forEach(el => {
+  //     if (el.name.toLowerCase() === name.toLowerCase()) {
+  //       alert(`${name} is already in the contacts`);
+  //       verification = true;
+  //     }
+  //   });
+
+  //   if (verification) {
+  //     return;
+  //   }
+  //   const contact = { id: nanoid(), name, number, };
+
+  //   this.setState(prevState => ({
+  //     contacts: [...prevState.contacts, { id: nanoid(), name, number, }, ],
+  //   }));
+  // };
+
   addContact = ({ name, number }) => {
-    let verification = false;
-    this.state.contacts.forEach(el => {
-      if (el.name.toLowerCase() === name.toLowerCase()) {
-        alert(`${name} is already in the contacts`);
-        verification = true;
+    this.setState(({ contacts }) => {
+      const verificationContact = contacts.find(el => el.name.toLowerCase() === name.toLowerCase());
+
+      if (!verificationContact) {
+        return { contacts: [...contacts, { id: nanoid(), name, number, }, ] };
+      } else {
+        alert(`${name} is already in contacts`);
       }
     });
-
-    if (verification) {
-      return;
-    }
-    const contact = { id: nanoid(), name, number, };
-
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
-    }));
   };
-
+  
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
