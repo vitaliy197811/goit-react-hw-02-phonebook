@@ -8,7 +8,7 @@ class ContactForm extends React.Component {
         number: '',
     };
 
-    static defaultProps = {
+    static = {
         onSubmit: PropTypes.func,
     }
 
