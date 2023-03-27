@@ -1,11 +1,11 @@
-import React from 'react';
+import { Component } from 'react';
 import { nanoid } from 'nanoid'
 import css from './App.module.css';
 import ContactForm from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
 
-class App extends React.Component {
+class App extends Component {
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -15,25 +15,6 @@ class App extends React.Component {
     ],
     filter: '',
   };
-
-  // addContact = ({ name, number }) => {
-  //   let verification = false;
-  //   this.state.contacts.forEach(el => {
-  //     if (el.name.toLowerCase() === name.toLowerCase()) {
-  //       alert(`${name} is already in the contacts`);
-  //       verification = true;
-  //     }
-  //   });
-
-  //   if (verification) {
-  //     return;
-  //   }
-  //   const contact = { id: nanoid(), name, number, };
-
-  //   this.setState(prevState => ({
-  //     contacts: [...prevState.contacts, { id: nanoid(), name, number, }, ],
-  //   }));
-  // };
 
   addContact = ({ name, number }) => {
     this.setState(({ contacts }) => {
@@ -68,8 +49,7 @@ class App extends React.Component {
     return (
       <div className={css.phonebook}>
         <h1 className={css.title}>Phonebook</h1>
-        <ContactForm 
-          onSubmit={this.addContact} />
+        <ContactForm onSubmit={this.addContact} />
         <h2 className={css.contacts}>Contacts</h2>
         <Filter 
           filter={this.state.filter} 

@@ -1,8 +1,8 @@
-import React from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
-class ContactForm extends React.Component {
+class ContactForm extends Component {
     state = {
         name: '',
         number: '',
@@ -13,9 +13,7 @@ class ContactForm extends React.Component {
     }
 
     handleChange = name => e => {
-        this.setState(() => ({
-        [name]: e.target.value,
-        }));
+        this.setState(() => ({[name]: e.target.value}));
     };
 
     handleSubmit = e => {
